@@ -41,4 +41,35 @@
       cursor: pointer;
     }
   }
+  .quiz-wrapper {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    gap: 10px;
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+    .but {
+      align-self: flex-start;
+      padding: 6px 4px;
+      width: 100px;
+      border: 0;
+      outline: none;
+      background-color: #bc4749;
+      color: white;
+      cursor: pointer;
+      border-radius: 20px;
+      &.back-but {
+        background-color: #f2e8cf;
+        color: #bc4749;
+      }
+      &.hint-but {
+        background-color: #2176aea0;
+        color: #e8ebf7;
+        align-self: flex-end;
+      }
+    }
+  }
 }
