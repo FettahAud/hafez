@@ -31,8 +31,8 @@ export default function Home() {
   };
 
   const pickRandomVerse = () => {
-    const random = Math.floor(Math.random() * verses!.length);
-    setVerse(verses![random]);
+    const random = Math.floor(Math.random() * verses.length);
+    setVerse(verses[random]);
   };
 
   const hintVerse = () => {
