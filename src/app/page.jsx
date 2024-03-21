@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   const hintVerse = () => {
-    alert(quran[verse.sura.id - 1].verses[verse.id]);
+    alert(quran[verse.sura.id - 1].verses[verse.id].text);
   };
 
   useEffect(() => {
