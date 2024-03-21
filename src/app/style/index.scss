@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap");
+
+*,
+::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Kufi Arabic", sans-serif;
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    .selects {
+      display: flex;
+      gap: 20px;
+      flex-direction: row-reverse;
+      .select-wrapper {
+        display: flex;
+        gap: 10px;
+        select {
+          padding: 4px 8px;
+          // border: 0;
+        }
+      }
+    }
+    .start-but {
+      width: 100%;
+      padding: 8px;
+      border: 0;
+      outline: none;
+      background-color: #bc4749;
+      color: #f2e8cf;
+      cursor: pointer;
+    }
+  }
+}

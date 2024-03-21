@@ -1,95 +1,56 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import quran from "quran-json";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [from, setFrom] = useState(0);
+  const [to, setTo] = useState(0);
+  const [fromQuranList, setFromQuranList] = useState(quran);
+  const [toQuranList, setToQuranList] = useState(quran);
+
+  useEffect(() => {
+    console.log("from", from);
+    console.log("to", to);
+  }, [to, from]);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="div" id="app">
+      <div className="wrapper">
+        <div className="selects">
+          <div className="select-wrapper from">
+            <select
+              value={from}
+              onChange={(e) => setFrom(Number(e.target.value))}
+            >
+              <option value={0} disabled>
+                من
+              </option>
+              {quran.map((surah, index) => (
+                <option key={index} value={index + 1}>
+                  {surah.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="select-wrapper to">
+            <select value={to} onChange={(e) => setTo(Number(e.target.value))}>
+              <option value={0} disabled>
+                إلى
+              </option>
+              {quran.map((surah, index) => (
+                <option
+                  key={index}
+                  value={index + 1}
+                  disabled={index + 1 < from}
+                >
+                  {surah.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
+        <button className="start-but">ابدأ</button>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }
