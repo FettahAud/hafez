@@ -1,7 +1,9 @@
-import { Inter } from "next/font/google";
+import { Inter, Noto_Kufi_Arabic } from "next/font/google";
+
 import "./style/index.scss";
 
 const inter = Inter({ subsets: ["latin"] });
+const noto = Noto_Kufi_Arabic({ subsets: ["arabic"] });
 
 export const metadata = {
   title: "Hafiz",
@@ -10,8 +12,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ar">
+      <body className={[inter.className, noto.className]}>{children}</body>
     </html>
   );
 }
